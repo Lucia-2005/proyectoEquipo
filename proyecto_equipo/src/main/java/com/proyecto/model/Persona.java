@@ -19,14 +19,14 @@ public class Persona {
     private String nombre;
 
     @Column(name = "Edad")
-    private int clan;
+    private int edad;
 
     public Persona() {
     }
 
-    public Persona(String nombre, int clan) {
+    public Persona(String nombre, int edad) {
         this.nombre = nombre;
-        this.clan = clan;
+        this.edad = edad;
     }
 
     
