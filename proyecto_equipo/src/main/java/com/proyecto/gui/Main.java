@@ -53,7 +53,7 @@ public class Main {
                     List<Persona> personas = personaDAO.selectAllPersona();
 
                     for (Persona pe : personas) {
-                        System.out.println(pe.getIdPersona + " " + pe.getNombre + " " + pe.getEdad); 
+                        System.out.println(pe.getIdPersona() + " " + pe.getNombre() + " " + pe.getEdad()); 
                     }
 	            		
 	            	break;
@@ -70,7 +70,7 @@ public class Main {
                         personas = personaDAO.selectAllPersonas();
 
                         for (Persona pe : personas) {
-                            System.out.println(pe.getIdPersona + " " + pe.getNombre + " " + pe.getEdad); 
+                            System.out.println(pe.getIdPersona() + " " + pe.getNombre() + " " + pe.getEdad()); 
                         }
 
 	            		
