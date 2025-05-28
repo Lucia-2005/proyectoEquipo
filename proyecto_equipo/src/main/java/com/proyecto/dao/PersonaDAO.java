@@ -8,7 +8,7 @@ import com.proyecto.util.HibernateUtil;
 public class PersonaDAO {
 
     // Insertar persona
-    public void insertarPersona(Persona p) {
+    public void insertPersona(Persona p) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -37,6 +37,27 @@ public class PersonaDAO {
                 transaction.rollback();
             }
         }
+    }
+
+    ////
+    // Mostrar Persona por id
+    // SELECCION SIMPLES
+    public Persona selectPersonaById(int id) {
+        Transaction transaction = null;
+        Persona p = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            p = session.get(Persona.class, id);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+
+            }
+            System.out.println("Error al seleccionar la persona por ID: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return p;
     }
 
     // Mostrar Persona
