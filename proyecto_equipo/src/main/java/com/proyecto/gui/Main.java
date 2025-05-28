@@ -48,9 +48,9 @@ public class Main {
 
                     Persona p = new Persona(nombre, edad);
 
-                    personaDAO.insertPersona(session, p);
+                    personaDAO.insertPersona(p);
 
-                    List<Persona> personas = personaDAO.selectAllPersona(session);
+                    List<Persona> personas = personaDAO.selectAllPersona();
 
                     for (Persona pe : personas) {
                         System.out.println(pe.getIdPersona + " " + pe.getNombre + " " + pe.getEdad); 
@@ -65,9 +65,9 @@ public class Main {
                         System.out.println("Pon un id");
                         int id = s.nextInt();
 
-                        personaDAO.deletePersona(session, id);
+                        personaDAO.deletePersona(id);
 
-                        personas = personaDAO.selectAllPersonas(session);
+                        personas = personaDAO.selectAllPersonas();
 
                         for (Persona pe : personas) {
                             System.out.println(pe.getIdPersona + " " + pe.getNombre + " " + pe.getEdad); 
@@ -84,15 +84,8 @@ public class Main {
 		                    System.out.println("Opción no válida");
 	            		
 	            }
-				transaction.commit();
-                session.clear();
 			}catch (Exception e) {
-                if (transaction != null) {
-                    transaction.rollback();
-                }
                 e.printStackTrace();
-            } finally {
-                session.close();
             }
             
 
